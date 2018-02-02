@@ -1,0 +1,8 @@
+<div class="pb-large-item" [class.not-started]="isNotStarted()">
+  <div class="pb-bar">
+    <mat-icon class="material-icons" *ngIf="isDisplayCheckSymbol()">check_circle</mat-icon>
+  </div>
+  <div class="pb-stage">
+    <p>{{data.name}}</p>
+  </div>
+</div>

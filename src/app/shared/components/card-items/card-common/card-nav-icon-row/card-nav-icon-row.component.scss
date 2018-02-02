@@ -1,0 +1,25 @@
+@import 'variable';
+@import 'mixin';
+:host {
+  display: flex;
+  align-items: center;
+   ::ng-deep {
+
+    iap-card-state {
+      flex-basis: 70%;
+    }
+
+    iap-card-info {
+      flex-basis: 50%;
+      @include mediaExtraSmallScreen {
+        flex-basis: 70%;
+      }
+    }
+    iap-card-nav-icon {
+      flex-basis: 50%;
+      @include mediaExtraSmallScreen {
+        flex-basis: 30%;
+      }
+    }
+  }
+}

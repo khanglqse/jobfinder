@@ -1,0 +1,45 @@
+@import 'mixin';
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 8px 16px;
+  margin-bottom: 10px;
+  background: rgba($color: #000000, $alpha: 0.1);
+  >.info {
+    >p {
+      margin: 0; // @include elipsisText();
+      /* These are technically the same, but use both */
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      -ms-word-break: break-all;
+      /* This is the dangerous one in WebKit, as it breaks things wherever */
+      word-break: break-all;
+      /* Instead use this non-standard one: */
+      word-break: break-word;
+      /* Adds a hyphen where the word breaks, if supported (No Blink) */
+      -ms-hyphens: auto;
+      -moz-hyphens: auto;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+      font-size: 0.9em;
+    }
+  }
+  >* {
+    flex-basis: 20%;
+    @include mediaExtraSmallScreen {
+      flex-basis: 100%;
+      max-width: 100%;
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+    &:first-child {
+      flex-grow: 1;
+    }
+  }
+  >button {
+    flex-basis: 70px;
+  }
+}

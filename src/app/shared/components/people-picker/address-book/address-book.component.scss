@@ -1,0 +1,62 @@
+@import 'variable';
+header {
+  position: relative;
+  margin-bottom: 20px;
+  >section {
+    >h4 {
+      margin: 0;
+    }
+  }
+  >.close-button {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  >mat-form-field {
+    &:first-of-type {
+      margin-right: 15px;
+    }
+    &:not(:first-of-type) {
+      flex-grow: 1;
+    }
+  }
+  >.search-filter {
+    flex-basis: 80%;
+  }
+  button[mat-icon-button] {
+    color: $color_petronas;
+  }
+}
+
+.result>div {
+  height: 300px;
+  overflow: auto;
+  margin-bottom: 15px;
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  button {
+    margin-left: 15px;
+  }
+}
+
+mat-row {
+  &:hover {
+    transition: background-color 0.15s ease-in-out;
+    background-color: rgba($color: $color-petronas, $alpha: 0.42);
+  }
+  &.selected {
+    transition: background-color 0.15s ease-in-out;
+    background-color: $color-petronas;
+    * {
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<header>
+  <h2>REMARK FOR APPROVE</h2>
+  <!-- <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button> -->
+</header>
+<mat-dialog-content>
+  <iap-label required>Evaluation Lead Assessor Performance:</iap-label>
+  <div class="instruction">
+    <iap-star-rating [value]="5" [disabled]="true"></iap-star-rating>
+    <p>Excellent</p>
+  </div>
+  <div class="instruction">
+    <iap-star-rating [value]="4" [disabled]="true"></iap-star-rating>
+    <p>Above Average</p>
+  </div>
+  <div class="instruction">
+    <iap-star-rating [value]="3" [disabled]="true"></iap-star-rating>
+    <p>Average</p>
+  </div>
+  <div class="instruction">
+    <iap-star-rating [value]="2" [disabled]="true"></iap-star-rating>
+    <p>Below Average</p>
+  </div>
+  <div class="instruction">
+    <iap-star-rating [value]="1" [disabled]="true"></iap-star-rating>
+    <p>Poor</p>
+  </div>
+  <div class="remark">
+    <iap-remark-question>1. Lorem, ipsum dolor.</iap-remark-question>
+    <iap-remark-question>2. Lorem, ipsum dolor.</iap-remark-question>
+    <iap-remark-question>3. Lorem, ipsum dolor.</iap-remark-question>
+    <iap-remark-question>4. Lorem, ipsum dolor.</iap-remark-question>
+    <iap-remark-question>5. Lorem, ipsum dolor.</iap-remark-question>
+  </div>
+  <div class="overall">
+    <iap-label>Overall Rating</iap-label>
+    <iap-star-rating [value]="3" [disabled]="true"></iap-star-rating>
+  </div>
+  <div class="action">
+    <button mat-raised-button color="primary" tabindex="-1" mat-dialog-close>SAVE</button>
+  </div>
+</mat-dialog-content>

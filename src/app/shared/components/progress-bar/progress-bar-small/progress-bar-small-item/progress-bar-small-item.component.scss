@@ -1,0 +1,22 @@
+@import 'variable.color';
+$progress-small-height: 10px;
+:host {
+  display: block;
+}
+
+.item-background {
+  background-color: $color-iap-blue;
+  height: $progress-small-height;
+  position: relative;
+  &.not-started {
+    background-color: rgb(204, 204, 204);
+  }
+  >i {
+    position: absolute;
+    font-size: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -11px;
+    color: $color-positive;
+  }
+}

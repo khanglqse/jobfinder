@@ -1,0 +1,13 @@
+@import 'mixin';
+:host {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  color: #666666;
+  @include elipsisText();
+  &[required] {
+    &::after {
+      content: '*';
+    }
+  }
+}

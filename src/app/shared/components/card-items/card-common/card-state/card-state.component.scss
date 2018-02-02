@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  >h2 {
+    display: flex;
+    align-items: center;
+    color: rgb(86, 209, 86);
+    line-height: 1em;
+    >i {
+      font-size: 40px;
+      margin-right: 10px;
+    }
+    &.not-comply {
+      color: rgb(216, 31, 42);
+      >i {
+        transform: rotate(45deg);
+      }
+    }
+  }
+}

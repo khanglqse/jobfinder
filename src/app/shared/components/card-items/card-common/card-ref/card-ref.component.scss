@@ -1,0 +1,13 @@
+@import 'mixin';
+@import 'variable.color';
+:host {
+  display: block;
+  margin-bottom: 20px;
+}
+
+p {
+  margin: 0;
+  color: $color-label-content;
+  font-weight: bold;
+  @include multiLineBreakText(1em, 2);
+}

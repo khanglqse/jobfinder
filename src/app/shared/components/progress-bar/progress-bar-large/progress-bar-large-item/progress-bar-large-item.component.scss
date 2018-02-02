@@ -1,0 +1,55 @@
+@import 'variable.color';
+$pb-item-height: 20px;
+$pb-item-width: 140px;
+$stage-gap: 8px;
+$pb-icon-size: 30px;
+$pb-item-gap: 2px;
+$pb-not-start-background: rgb(204, 204, 204);
+:host {
+  display: inline-block;
+  vertical-align: top;
+  .pb-large-item {
+    position: relative;
+    .pb-bar {
+      height: $pb-item-height;
+      width: $pb-item-width;
+      background: $color-iap-blue;
+      position: relative;
+      margin-right: $pb-item-gap;
+      >mat-icon {
+        position: absolute;
+        left: 50%;
+        top: calc(#{-$pb-icon-size} / 2);
+        transform: translateX(-50%);
+        background: radial-gradient(white 50%, transparent 50%);
+        color: $color-positive;
+        font-size: $pb-icon-size;
+        height: $pb-icon-size;
+        width: $pb-icon-size;
+      }
+    }
+    .pb-stage {
+      position: absolute;
+      top: $pb-item-height;
+      width: $pb-item-width;
+      >p {
+        margin-top: $stage-gap;
+        margin-bottom: 0;
+        white-space: pre-wrap;
+        word-break: break-word;
+        color: $color-iap-blue;
+        font-weight: 700;
+      }
+    }
+    &.not-started {
+      .pb-bar {
+        background: $pb-not-start-background;
+      }
+      .pb-stage {
+        >p {
+          color: $color-iap-light-text;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+@import 'variable';
+@import 'variable.color';
+$box-shadow-1: 0 2px 2px rgba(0, 0, 0, .24);
+$box-shadow-2: 0 0 2px rgba(0, 0, 0, .12);
+:host {
+  display: block;
+  box-shadow: $box-shadow-1, $box-shadow-2;
+  background: white;
+  padding: 16px;
+  margin-bottom: 15px;
+  &.top-bordered {
+    border: 0px solid $color-petronas;
+    border-top-width: 5px;
+    &.big {
+      border-top-width: 10px;
+    }
+    &.thin {
+      border-top-width: 2px;
+    }
+  }
+  &.left-bordered {
+    border: 0px solid $color-petronas;
+    border-left-width: 5px;
+    &.big {
+      border-left-width: 10px;
+    }
+    &.thin {
+      border-left-width: 2px;
+    }
+  }
+  .normal-borderd {
+    border: 1px solid gray;
+  }
+  &.primary {
+    border-color: $color-petronas;
+  }
+  &.violet {
+    border-color: $color-petronas-violet;
+  }
+  &.gold {
+    border-color: $color-petronas-gold;
+  }
+  &.blue {
+    border-color: $color-blue;
+  }
+  &.light-blue {
+    border-color: $color-petronas-light-blue;
+  }
+  &.brown {
+    border-color: $color-petronas-brown;
+  }
+  &.pink {
+    border-color: $color-petronas-pink;
+  }
+  &.opu-aap {
+    border-color: $color-opu-aap;
+  }
+  &.dept-aap {
+    border-color: $color-dept-aap;
+  }
+  &.ap {
+    border-color: $color-ap;
+  }
+  &.assessor {
+    border-color: $color-assessor;
+  }
+  &.findings-item {
+    border-color: $color-findings-item;
+  }
+  &.action-item {
+    border-color: $color-action-item;
+  }
+  &.none-shadow {
+    box-shadow: none;
+  }
+}

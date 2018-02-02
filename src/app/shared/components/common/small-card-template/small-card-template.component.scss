@@ -1,0 +1,11 @@
+@import 'variable';
+@import 'mixin';
+$title-gap: 5px;
+:host {
+  display: block;
+  margin-bottom: 15px;
+}
+
+hr {
+  margin: 10px 0;
+}

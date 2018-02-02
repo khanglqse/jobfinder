@@ -1,0 +1,27 @@
+<h2>Upload Attachment:</h2>
+<mat-radio-group>
+  <mat-radio-button value="document" [checked]="true" color="primary">Document</mat-radio-button>
+  <mat-radio-button value="link" color="primary">Link to Document</mat-radio-button>
+</mat-radio-group>
+<mat-form-field>
+  <input matInput placeholder="Document Name" required>
+</mat-form-field>
+<div class="doc-type-container">
+  <mat-form-field>
+    <mat-select placeholder="Document Type" required>
+      <mat-option [value]="1">Option 1</mat-option>
+      <mat-option [value]="2">Option 1</mat-option>
+      <mat-option [value]="3">Option 1</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="upload-container">
+    <span>Select file to upload</span>
+    <button mat-raised-button class="mat-button-petronas-ghost-small" id="browse" (click)="openFileDialog()">Browse</button>
+    <form id="frmAttachment" hidden>
+      <input type="file" (change)="handleInputFileChange($event)" multiple>
+    </form>
+  </div>
+</div>
+
+<iap-label>Uploaded Attachments ({{data.length}})</iap-label>
+<iap-attachment-item *ngFor="let attachment of data" [data]="attachment"></iap-attachment-item>

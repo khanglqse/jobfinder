@@ -1,0 +1,45 @@
+@import 'variable';
+
+header {
+    position: relative;
+    margin: -24px;
+    background: $color-petronas;
+    padding: 8px;
+    color: white;
+    h2 {
+        margin: 0;
+        text-align: center;
+    }
+    button {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+mat-dialog-content {
+    margin-top: 24px;
+    padding-top: 24px;
+}
+
+.instruction {
+    display: flex;
+    align-items: center;
+    height: 40px;
+
+    > p {
+        margin: 0 0 0 24px;
+        position: relative;
+        top: 3px;
+        font-size: 1.2em;
+    }
+}
+
+.remark {
+    padding: 40px;
+}
+
+.action {
+    display: flex;
+    justify-content: flex-end;
+}

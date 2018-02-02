@@ -1,0 +1,20 @@
+@import 'mixin';
+$gap: 10px;
+:host {
+  display: flex;
+  flex-wrap: wrap;
+   ::ng-deep iap-card-info {
+    flex-basis: calc((100% - #{$gap})/2);
+    flex-grow: 1;
+    @include mediaExtraSmallScreen {
+      flex-basis: 100%;
+    }
+    &:first-child {
+      margin-right: $gap;
+      @include mediaExtraSmallScreen {
+        flex-basis: 100%;
+        margin-right: 0;
+      }
+    }
+  }
+}

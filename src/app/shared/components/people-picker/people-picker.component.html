@@ -1,0 +1,29 @@
+<button mat-raised-button class="people-wrapper" 
+  [disabled]="selectedUser != null" 
+  [ngClass]="{'has-error': (hasError === true && isRequired===true)}"
+  (click)="openAddressBook()">
+  <div class="wrapper">
+    <button *ngIf="selectedUser" mat-icon-button class="close" (click)="removeUser($event)">
+      <mat-icon>close</mat-icon>
+    </button>
+    <div class="people-title">{{title}}
+      <span *ngIf="isRequired===true">*</span>
+    </div>
+    <div class="profile-image">
+      <img *ngIf="selectedUser" src="/assets/images/profile-image-example.jpg" alt="profile-image">
+      <mat-icon>account_circle</mat-icon>
+    </div>
+    <div class="profile-info-wrapper">
+      <div *ngIf="selectedUser" class="profile-info">
+        <h4>{{selectedUser.name}}</h4>
+        <p>{{selectedUser.roles.join(', ')}}</p>
+      </div>
+      <div class="placeholder">
+        <p>Click here</p>
+      </div>
+    </div>
+    <div class="error-message-wrapper">
+      <p class="error-message">{{title}} is required</p>
+    </div>
+  </div>
+</button>

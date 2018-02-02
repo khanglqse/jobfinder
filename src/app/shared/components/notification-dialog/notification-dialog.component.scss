@@ -1,0 +1,68 @@
+@import 'variable';
+$color-success: $color-petronas;
+$color-warining: #EFAA23;
+$color-error: #D81F2A;
+header {
+  position: relative;
+  &.success {
+    i {
+      color: $color-success;
+    }
+  }
+  &.warning {
+    i {
+      color: $color-warining;
+    }
+  }
+  &.error {
+    i {
+      color: $color-error;
+    }
+  }
+  &.confirm {
+    i {
+      color: $color-petronas;
+    }
+  }
+}
+
+.close-button {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+}
+
+[mat-dialog-actions] {
+  display: flex;
+  >button {
+    flex-grow: 1;
+    &.btn-noti {
+      &.success {
+        background: $color-success;
+      }
+      &.warning {
+        background: $color-warining;
+      }
+      &.error {
+        background: $color-error;
+      }
+    }
+  }
+}
+
+.icon {
+  text-align: center;
+  >i {
+    font-size: 90px;
+  }
+}
+
+[mat-dialog-title] {
+  text-align: center;
+  font-weight: 500;
+}
+
+mat-dialog-content p {
+  margin: 0;
+  text-align: center;
+}

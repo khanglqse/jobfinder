@@ -1,0 +1,28 @@
+@import 'variable';
+:host {
+  display: block;
+  position: relative;
+  margin: 0 -24px;
+  margin-top: -24px;
+  margin-bottom: 0;
+  padding: 8px;
+  text-align: center;
+  background: $color-petronas;
+  color: white;
+  font-size: 1em;
+  font-weight: 700;
+}
+
+header {
+  ::ng-deep {
+    *:first-child {
+      margin: 0;
+    }
+
+    button {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+  }
+}

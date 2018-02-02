@@ -1,0 +1,17 @@
+@import 'mixin';
+@import 'variable.color';
+
+:host {
+  display: block;
+  margin-bottom: 10px;
+  >p {
+    margin: 0;
+    font-weight: bold;
+    color: $color-label-header;
+  }
+  &:not(.no-elipsis) {
+    >p {
+      @include multiLineElipsisText(1.2em, 2);
+    }
+  }
+}

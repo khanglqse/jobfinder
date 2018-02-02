@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+}
+
+iap-progress-bar-large-step {
+  &:first-child {
+    margin-left: 0;
+    ::ng-deep .pb-step-wrapper {
+      &::before {
+        display: none;
+      }
+    }
+  }
+  &:last-child {
+    margin-right: 0;
+    &.collapse {
+      ::ng-deep {
+        .pb-step-wrapper {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import 'variable.color';
+$progress-small-height: 10px;
+$progress-step-size: 35px;
+:host {
+  display: inline-flex;
+}
+
+iap-progress-bar-small-step {
+  position: relative;
+  &:not(:last-of-type) {
+    &:after {
+      content: '';
+      width: 2px;
+      position: absolute;
+      background: $color-iap-blue;
+      right: -1px;
+      height: $progress-small-height;
+      top: calc(#{$progress-step-size}/2 - #{$progress-small-height}/2);
+    }
+  }
+}

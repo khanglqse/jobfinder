@@ -1,0 +1,28 @@
+<iap-dialog-header>
+  <h2>REQUEST DUE DATE EXTENSION</h2>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</iap-dialog-header>
+<mat-dialog-content>
+  <div class="due-date-container">
+    <div class="detail">
+      <div class="current">
+        <iap-label>Current Due Date</iap-label>
+        <p>00 Mth 2018</p>
+      </div>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="New Due Date Request">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Reason for extension" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" required></textarea>
+      </mat-form-field>
+    </div>
+    <div class="action">
+      <button mat-raised-button class="mat-button-lg" color="primary">SAVE</button>
+      <button mat-raised-button class="mat-button-lg mat-button-petronas-ghost" mat-dialog-close>CANCEL</button>
+    </div>
+  </div>
+</mat-dialog-content>

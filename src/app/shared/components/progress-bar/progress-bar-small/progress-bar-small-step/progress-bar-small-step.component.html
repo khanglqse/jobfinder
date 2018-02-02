@@ -1,0 +1,16 @@
+<div class="progress-bar">
+  <div class="progress-step">
+    <button mat-icon-button (click)="toggleBar()" [disabled]="isNotStarted === true">
+      <span *ngIf="!isStepCompleted">{{data.stepIndex}}</span>
+      <mat-icon *ngIf="isStepCompleted" class="material-icons">check_circle</mat-icon>
+    </button>
+  </div>
+  <div class="progress-items-container">
+    <div class="progress-items">
+      <iap-progress-bar-small-item *ngFor="let stepItem of data.listStepItem" [data]="stepItem"></iap-progress-bar-small-item>
+    </div>
+  </div>
+</div>
+<div class="progress-stage">
+  <p>{{getLastestStep()}}</p>
+</div>

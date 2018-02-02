@@ -1,0 +1,177 @@
+@import 'variable';
+$people-height: 65.5px;
+$image-size: 35px;
+$people-picker-main-color: rgba(0, 0, 0, 0.42);
+$role-color: rgba(0, 0, 0, 0.7);
+$name-color: black;
+$duration-time: 0.45s;
+$wrapper-padding-left: 16px;
+$image-margin-right: 16px;
+$profile-info-left-position: $image-size+$wrapper-padding-left+$image-margin-right;
+$error-message-height: 13px;
+$transistion-color: color $duration-time cubic-bezier(.25, .8, .25, 1);
+%height-width-max {
+  height: 100%;
+  width: 100%;
+}
+
+@mixin height-width-same($size) {
+  height: $size;
+  width: $size;
+}
+
+button.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.error-message-wrapper {
+  display: none;
+  position: absolute;
+  overflow: hidden;
+  left: $profile-info-left-position;
+  bottom: 2px;
+}
+
+.error-message {
+  color: $color-petronas-red;
+  height: $error-message-height;
+  font-size: 12px;
+  line-height: 1em;
+  margin: 0;
+  animation: displayError $duration-time ease-in-out forwards;
+  @keyframes displayError {
+    0% {
+      transform: translateY(#{-$error-message-height});
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
+
+.people-wrapper {
+  width: 100%;
+  height: $people-height;
+  border: 1px solid $people-picker-main-color;
+  color: $people-picker-main-color;
+  border-radius: 4px;
+  &:disabled {
+    user-select: text;
+    cursor: auto;
+    background: transparent;
+    .people-title {
+      transform: perspective(100px) translateZ(0.001px) scale(0.75) translateY(-12px);
+    }
+    .profile-info {
+      animation: appearProfileInfo $duration-time ease-in-out forwards;
+      @keyframes appearProfileInfo {
+        0% {
+          transform: translateY(-50px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+  &:focus {
+    .people-title,
+    mat-icon,
+    .placeholder>p {
+      color: $color-petronas;
+    }
+  }
+  &.has-error {
+    border-color: $color-petronas-red !important;
+    .error-message-wrapper {
+      display: block;
+    }
+    .people-title,
+    mat-icon,
+    .placeholder>p {
+      color: $color-petronas-red !important;
+    }
+  }
+  .people-title {
+    top: 10px;
+    position: absolute;
+    left: $profile-info-left-position;
+    line-height: 1em;
+    font-size: 16px;
+    transform-origin: 0 0;
+    transition: transform $duration-time cubic-bezier(.25, .8, .25, 1), $transistion-color, width $duration-time cubic-bezier(.25, .8, .25, 1);
+  }
+  .profile-image {
+    flex-shrink: 0;
+    @include height-width-same($image-size);
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: $image-margin-right;
+    >img {
+      @extend %height-width-max;
+    }
+    >mat-icon {
+      @include height-width-same($image-size);
+      font-size: $image-size;
+      transition: $transistion-color;
+    }
+  }
+  .profile-info-wrapper {
+    @extend %height-width-max;
+    overflow: hidden;
+    border: 0px solid transparent;
+    border-top-width: 20.5px;
+    border-bottom-width: 7px;
+    border-right-width: 40px;
+    .profile-info {
+      text-align: left;
+      height: 100%;
+      flex-grow: 1;
+      display: flex;
+      overflow: hidden;
+      flex-direction: column;
+      justify-content: space-around;
+      line-height: 1em;
+      @mixin ellipsis() {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      >h4 {
+        color: $name-color;
+        margin: 0;
+        font-size: 16px;
+        @include ellipsis();
+      }
+      >p {
+        margin: 0;
+        color: $role-color;
+        font-weight: 300;
+        font-size: 12px;
+        @include ellipsis();
+      }
+    }
+    .placeholder {
+      text-align: left;
+      margin-top: 10px;
+      p {
+        margin: 0;
+        line-height: 1em;
+        transition: $transistion-color;
+      }
+    }
+  }
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding-left: $wrapper-padding-left;
+}

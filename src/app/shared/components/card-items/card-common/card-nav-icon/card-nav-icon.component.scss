@@ -1,0 +1,17 @@
+@import 'variable';
+:host {
+    display: block;
+}
+
+div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  a {
+    display: flex;
+    color: $color-petronas;
+    >i {
+      font-size: 40px;
+    }
+  }
+}

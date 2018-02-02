@@ -1,0 +1,12 @@
+@import 'variable';
+:host {
+  display: block;
+}
+
+h2 {
+  margin: 0;
+  padding: 16px 24px;
+  background: white;
+  border-bottom: 1px solid $color-petronas;
+  color: $color-petronas;
+}

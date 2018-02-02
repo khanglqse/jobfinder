@@ -1,0 +1,166 @@
+@import 'variable.color';
+$pb-step-index-size: 140px;
+$pb-item-height: 20px;
+$pb-step-number-height: 40%;
+$pb-icon-size: 30px;
+$pb-step-wing-width: 6px;
+$pb-step-gap: 2px;
+$pb-step-item-gap: 2px;
+$not-started-background: rgb(204, 204, 204);
+$duration: 0.3s;
+:host {
+  display: block;
+  margin-right: $pb-step-gap + 1px;
+  margin-left: $pb-step-gap;
+  &.not-started {
+    >.pb-step {
+      >.pb-step-wrapper {
+        &:before,
+        &:after {
+          background: $not-started-background;
+        }
+        >.pb-step-index {
+          .pb-step-index-wrapper {
+            background: $not-started-background;
+          }
+        }
+      }
+    }
+  }
+  &.collapse {
+    iap-progress-bar-large-item {
+      ::ng-deep {
+        .pb-bar {
+          animation: collapse-large-item $duration ease-in-out forwards;
+          @keyframes collapse-large-item {
+            0% {
+              width: $pb-step-index-size;
+              margin-right: $pb-step-item-gap;
+            }
+            100% {
+              width: 0px;
+              margin-right: 0;
+            }
+          }
+          >mat-icon {
+            display: none;
+          }
+        }
+        .pb-stage {
+          display: none;
+        }
+      }
+    }
+  }
+  &.expand {
+    iap-progress-bar-large-item {
+      ::ng-deep {
+        .pb-bar {
+          animation: expand-large-item $duration ease-in-out forwards;
+          @keyframes expand-large-item {
+            0% {
+              width: 0px;
+              margin-right: 0;
+            }
+            100% {
+              width: $pb-step-index-size;
+              margin-right: $pb-step-item-gap;
+            }
+          }
+          >mat-icon {
+            display: block;
+          }
+        }
+        .pb-stage {
+          opacity: 0;
+          animation: display-state 0s ease-in-out forwards $duration;
+          @keyframes display-state {
+            100% {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.pb-step {
+  display: flex;
+  position: relative;
+  >.pb-step-wrapper {
+    position: relative;
+    margin-right: $pb-step-wing-width - 1px + $pb-step-gap;
+    &:before,
+    &:after {
+      content: '';
+      height: $pb-item-height;
+      width: $pb-step-wing-width;
+      background: $color-iap-blue;
+      position: absolute;
+      top: calc(#{$pb-step-index-size} / 2 - #{$pb-item-height} / 2);
+    }
+    &:before {
+      left: calc(#{-$pb-step-wing-width} + 1px);
+    }
+    &:after {
+      right: calc(#{-$pb-step-wing-width} + 1px);
+    }
+    >.pb-step-index {
+      padding: 0;
+      height: $pb-step-index-size;
+      width: $pb-step-index-size;
+      border-radius: 50%;
+      overflow: hidden;
+      .pb-step-index-wrapper {
+        height: $pb-step-index-size;
+        width: $pb-step-index-size;
+        border-radius: 50%;
+        overflow: hidden;
+        background: $color-iap-blue;
+        color: white;
+        font-weight: 700;
+        position: relative;
+        margin-right: calc(#{$pb-step-wing-width} - 1px + #{$pb-step-gap});
+        >.pb-step-number {
+          height: $pb-step-number-height;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          >mat-icon {
+            color: $color-positive;
+            background: radial-gradient(white 50%, transparent 50%);
+            font-size: $pb-icon-size;
+            height: $pb-icon-size;
+            width: $pb-icon-size;
+          }
+          >span {
+            font-size: 1.4em;
+          }
+        }
+        >.pb-step-stage {
+          height: calc(100% - #{$pb-step-number-height});
+          padding: 0 16px;
+          font-size: 1.2em;
+          white-space: pre-wrap;
+          line-height: 1.1em;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          >span {
+            word-break: break-word;
+          }
+        }
+      }
+      ::ng-deep .mat-button-ripple {
+        border-radius: 50%;
+        overflow: hidden;
+      }
+    }
+  }
+  >.pb-list-step-item {
+    position: relative;
+    top: calc(#{$pb-step-index-size} / 2 - #{$pb-item-height} / 2);
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,19 @@
+@import 'variable';
+@import 'mixin';
+
+:host {
+    display: block;
+}
+
+h3 {
+    color: $color-petronas;
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        i {
+            font-size: 40px;
+        }
+    }
+}
+

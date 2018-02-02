@@ -1,0 +1,173 @@
+@import 'variable.color';
+$progress-step-size: 35px;
+$state-margin: 10px;
+$state-height: 18px;
+$time-duration: 0.3s;
+:host {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  height: $progress-step-size + $state-margin + $state-height;
+  &.collapse {
+    .progress-stage {
+      display: none;
+    }
+    ::ng-deep {
+      iap-progress-bar-small-item {
+        i {
+          display: none;
+        }
+        animation: collapse $time-duration forwards ease-in-out;
+        @keyframes collapse {
+          0% {
+            width: 40px;
+            margin-right: 2px;
+          }
+          100% {
+            width: 0;
+            margin-right: 0;
+            display: none;
+          }
+        }
+        &:last-child {
+          animation: collapse-last-child $time-duration forwards ease-in-out;
+          @keyframes collapse-last-child {
+            0% {
+              width: 40px;
+            }
+            100% {
+              width: 0;
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.expand {
+    .progress-stage {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      animation: display-state $time-duration forwards ease-in-out;
+      @keyframes display-state {
+        0% {
+          display: none;
+          opacity: 0;
+        }
+        90% {
+          opacity: 0;
+        }
+        100% {
+          display: block;
+          opacity: 1;
+        }
+      }
+    }
+    ::ng-deep {
+      iap-progress-bar-small-item {
+        i {
+          display: block;
+        }
+        animation: expand $time-duration forwards ease-in-out;
+        @keyframes expand {
+          0% {
+            width: 0px;
+            display: block;
+            margin-right: 0;
+          }
+          100% {
+            width: 40px;
+            margin-right: 2px;
+          }
+        }
+        &:last-child {
+          animation: expand-last-child $time-duration forwards ease-in-out;
+          @keyframes expand-last-child {
+            0% {
+              width: 0px;
+              display: block;
+              margin-right: 0;
+            }
+            100% {
+              width: 40px;
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.not-started {
+    .progress-bar {
+      .progress-step {
+        background-color: rgb(204, 204, 204);
+      }
+    }
+    &::after {
+      background-color: rgb(204, 204, 204) !important;
+    }
+  }
+}
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+  .progress-step {
+    width: $progress-step-size;
+    height: $progress-step-size;
+    border-radius: 50%;
+    background-color: $color-iap-blue;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 1;
+    >button {
+      padding: 0 !important;
+      min-width: 100% !important;
+      width: 100% !important;
+      height: 100% !important;
+      border-radius: 50%;
+      overflow: hidden;
+      span {
+        position: relative;
+        bottom: 2px;
+      }
+      mat-icon {
+        position: relative;
+        width: auto;
+        height: auto;
+        line-height: 1em;
+        bottom: 3px;
+        left: 0;
+        font-size: 30px;
+        color: $color-positive;
+        background: radial-gradient(white 50%, transparent 50%);
+      }
+    }
+  }
+  .progress-items {
+    display: flex;
+    position: relative;
+    left: -1px;
+    >iap-progress-bar-small-item {
+      width: 40px;
+      &:not(:last-child) {
+        margin-right: 2px;
+      }
+    }
+  }
+}
+
+.progress-stage {
+  >p {
+    margin-top: 10px;
+    margin-bottom: 0;
+    color: $color-iap-blue;
+    font-weight: bold;
+    width: 100%;
+    word-break: break-all;
+  }
+}

@@ -1,0 +1,74 @@
+<header>
+  <section>
+    <h4>Address Book</h4>
+  </section>
+  <button mat-icon-button class="close-button" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</header>
+<div class="content">
+  <mat-form-field>
+    <mat-select placeholder="Filter by" [(value)]="filterBy">
+      <mat-option *ngFor="let filter of filters" [value]="filter.id">
+        {{ filter.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="filterBy !== 3" class="textbox">
+    <input matInput placeholder="Search" cdkFocusInitial>
+  </mat-form-field>
+  <mat-form-field *ngIf="filterBy === 3" class="dropdown">
+    <mat-select placeholder="Role" [(value)]="roles[0].id" cdkFocusInitial>
+      <mat-option *ngFor="let role of roles" [value]="role.id">
+        {{ role.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-icon-button>
+    <mat-icon>search</mat-icon>
+  </button>
+</div>
+
+<div class="result">
+  <div *ngIf="filterBy !== 3">
+    <mat-table #table [dataSource]="dataSource">
+
+      <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        <!-- Position Column -->
+      <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="roles">
+        <mat-header-cell *matHeaderCellDef> Role(s) </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.roles.join(', ')}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row [ngClass]="{selected: row == selectedRow}" *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)"
+        (dblclick)="selectRow(row);onReturnData()"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+    </mat-paginator>
+  </div>
+  <footer>
+    <button mat-raised-button mat-dialog-close>Close</button>
+    <button mat-raised-button color="primary" [disabled]="selectedRow == null" (click)="onReturnData()">Select</button>
+  </footer>
+</div>

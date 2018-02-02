@@ -1,0 +1,18 @@
+<div class="pb-step">
+  <div class="pb-step-wrapper">
+    <button mat-button class="pb-step-index" (click)="toggleBar()" [disabled]="isNotStarted === true">
+      <div class="pb-step-index-wrapper">
+        <div class="pb-step-number">
+          <span *ngIf="!isStepCompleted">{{data.stepIndex}}</span>
+          <mat-icon *ngIf="isStepCompleted" class="material-icons">check_circle</mat-icon>
+        </div>
+        <div class="pb-step-stage">
+          <span title="{{data.name}}">{{data.name}}</span>
+        </div>
+      </div>
+    </button>
+  </div>
+  <div class="pb-list-step-item">
+    <iap-progress-bar-large-item *ngFor="let stepItem of data.listStepItem" [data]="stepItem"></iap-progress-bar-large-item>
+  </div>
+</div>
